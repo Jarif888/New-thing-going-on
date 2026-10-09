@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ========== SEO: replace the [PLACEHOLDERS] ========== -->
+<title>[STUDENT NAME] | [PROGRAM NAME] Student</title>
+<meta name="description" content="Personal portfolio of [STUDENT NAME], a [PROGRAM NAME] student in [CITY, STATE]. Projects, experience, research and contact information.">
+<meta name="author" content="[STUDENT NAME]">
+<link rel="canonical" href="https://[YOUR-USERNAME].github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="[STUDENT NAME] | Personal Portfolio">
+<meta property="og:description" content="[PROGRAM NAME] student. Projects, experience and contact information.">
+<meta property="og:url" content="https://[YOUR-USERNAME].github.io/">
+<meta property="og:image" content="assets/profile.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[STUDENT NAME] | Personal Portfolio">
+<meta name="twitter:description" content="[PROGRAM NAME] student. Projects, experience and contact information.">
+<meta name="theme-color" content="#16325c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316325c'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='%23e8b94a' font-family='Georgia,serif'%3EP%3C/text%3E%3C/svg%3E">
+
+<!-- Fonts are optional. If they fail to load, the site falls back to system fonts. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  /* Apply saved theme (or system preference) before page paints, to avoid a flash. */
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+
+<style>
+/* =====================================================================
+   CSS
+   ===================================================================== */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --surface-2: #eef1f6;
+  --text: #1b2433; --muted: #566175; --line: #dde2ea;
+  --brand: #16325c; --brand-ink: #ffffff; --accent: #b8860b; --link: #1f5fae;
+  --shadow: 0 1px 2px rgba(22,50,92,.06), 0 6px 18px rgba(22,50,92,.06);
+  --radius: 14px;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+[data-theme="dark"] {
+  --bg: #0f1623; --surface: #172033; --surface-2: #1d2940;
+  --text: #e8ecf3; --muted: #a2adc0; --line: #2a3752;
+  --brand: #8fb4ec; --brand-ink: #0f1623; --accent: #e8b94a; --link: #8fb4ec;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; font: 400 1.05rem/1.65 var(--sans); background: var(--bg); color: var(--text); }
+img { max-width: 100%; display: block; }
+a { color: var(--link); }
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; margin: 0; }
+p { margin: 0 0 .8em; }
+ul { margin: 0; padding-left: 1.2em; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--brand); color: var(--brand-ink); padding: 8px 14px; border-radius: 8px; z-index: 100; }
+.skip:focus { left: 8px; }
+
+/* Header / navigation */
+header.top { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 62px; }
+.brand { font: 700 1.15rem var(--serif); color: var(--text); text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 2px; padding: 0; margin: 0; }
+nav a { display: block; padding: 8px 12px; border-radius: 8px; color: var(--muted); text-decoration: none; font-weight: 500; font-size: .95rem; }
+nav a:hover { color: var(--text); background: var(--surface-2); }
+nav a.active { color: var(--brand); background: var(--surface-2); }
+.tools { display: flex; gap: 8px; align-items: center; }
+.icon-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
+.icon-btn:hover { background: var(--surface-2); }
+#menuBtn { display: none; }
+@media (max-width: 880px) {
+  #menuBtn { display: grid; }
+  nav { position: absolute; left: 0; right: 0; top: 62px; background: var(--surface); border-bottom: 1px solid var(--line); display: none; padding: 8px 22px 16px; }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; }
+}
+
+/* Hero */
+.hero { padding: 64px 0 56px; background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); border-bottom: 1px solid var(--line); }
+.hero-grid { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: center; }
+.tag { display: inline-block; font-size: .85rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; margin-bottom: 18px; background: var(--surface); }
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); letter-spacing: -.01em; }
+.hero .program { margin: 10px 0 0; font: 600 1.1rem var(--sans); color: var(--brand); }
+.hero .intro { margin: 18px 0 0; max-width: 60ch; color: var(--muted); font-size: 1.1rem; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 20px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .98rem; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn { display: inline-block; padding: 11px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--brand); }
+.btn.primary { background: var(--brand); color: var(--brand-ink); }
+.btn.primary:hover { filter: brightness(1.12); }
+.btn.ghost { color: var(--brand); background: transparent; }
+.btn.ghost:hover { background: var(--surface-2); }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.socials a { font-size: .9rem; padding: 5px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); text-decoration: none; }
+.socials a:hover { border-color: var(--brand); color: var(--brand); }
+.photo { width: 280px; height: 340px; border-radius: 22px 22px 22px 90px; overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); box-shadow: var(--shadow); position: relative; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo .initials { position: absolute; inset: 0; display: grid; place-items: center; font: 600 4.5rem var(--serif); color: var(--brand); }
+.hero-grid > * { animation: rise .7s ease both; }
+.hero-grid > *:nth-child(2) { animation-delay: .12s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (max-width: 820px) {
+  .hero { padding: 40px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .photo { order: -1; width: 200px; height: 240px; border-radius: 18px 18px 18px 60px; }
+}
+
+/* Sections */
+section.sec { padding: 64px 0 8px; }
+section.sec:last-of-type { padding-bottom: 64px; }
+.sec h2 { font-size: 1.9rem; margin-bottom: 8px; }
+.sec h2::after { content: ""; display: block; width: 44px; height: 3px; background: var(--accent); margin-top: 10px; border-radius: 2px; }
+.sec .lead { color: var(--muted); margin: 14px 0 0; max-width: 62ch; }
+.body { margin-top: 28px; }
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+.card h3 { font-size: 1.2rem; }
+.card .sub { color: var(--muted); font-size: .95rem; margin: 4px 0 10px; }
+.date { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+.row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+.chips li { font-size: .85rem; padding: 3px 11px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); }
+.links { display: flex; gap: 16px; margin-top: 14px; font-weight: 600; font-size: .95rem; }
+details { margin-top: 12px; }
+summary { cursor: pointer; font-weight: 600; color: var(--brand); }
+.about-grid { display: grid; gap: 20px; grid-template-columns: 1.4fr 1fr; }
+.about-grid h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.about-grid .card + .card { margin-top: 20px; }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* Projects */
+.project { padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+.project:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(22,50,92,.14); }
+.project .shot { position: relative; aspect-ratio: 16/9; background: var(--surface-2); border-bottom: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); font-size: .9rem; overflow: hidden; }
+.project .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.project .in { padding: 20px 22px 22px; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 26px; border-left: 2px solid var(--line); display: grid; gap: 22px; }
+.timeline > .card { position: relative; }
+.timeline > .card::before { content: ""; position: absolute; left: -35px; top: 28px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); }
+@media (max-width: 520px) { .timeline { padding-left: 16px; } .timeline > .card::before { left: -25px; } }
+
+/* Publications */
+.pub { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pub + .pub { margin-top: 14px; }
+.pub .t { font-weight: 600; }
+.pub .v { font-style: italic; }
+
+/* Resume + contact */
+.cta { background: var(--brand); color: var(--brand-ink); border-radius: 20px; padding: 40px; text-align: center; }
+.cta h2 { color: inherit; }
+.cta h2::after { margin-left: auto; margin-right: auto; }
+.cta p { max-width: 56ch; margin: 14px auto 0; opacity: .9; }
+.cta .btns { justify-content: center; }
+.cta .btn.primary { background: var(--brand-ink); color: var(--brand); border-color: var(--brand-ink); }
+.cta .btn.ghost { color: var(--brand-ink); border-color: var(--brand-ink); }
+.cta .btn.ghost:hover { background: rgba(255,255,255,.12); }
+.cta .socials { justify-content: center; }
+.cta .socials a { background: transparent; color: var(--brand-ink); border-color: rgba(255,255,255,.4); }
+[data-theme="dark"] .cta .socials a { border-color: rgba(0,0,0,.35); }
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .92rem; text-align: center; }
+noscript .wrap { padding: 16px 22px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media print { header.top, .btns, .tools { display: none; } }
+</style>
+</head>
+
+<body>
+<!-- =====================================================================
+     STUDENT INFORMATION — EDIT THIS SECTION
+     Everything you need to change is in the JavaScript block at the BOTTOM
+     of this file, inside:  const STUDENT = { ... }
+     Search the file for "STUDENT INFORMATION" to jump there.
+
+     Rules:
+       - Keep the quotation marks "like this" and the commas between items.
+       - To HIDE a social link or a whole section, leave it empty: "" or [].
+       - To ADD a project/job/etc., copy one { ... }, block and paste it below.
+       - Photo goes in:   assets/profile.jpg
+       - Project images:  assets/project-1.jpg, assets/project-2.jpg ...
+       - Resume goes in:  assets/resume.pdf
+     ===================================================================== -->
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#home" id="brandName">[STUDENT NAME]</a>
+    <nav id="siteNav" aria-label="Main navigation"><ul id="navList"></ul></nav>
+    <div class="tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark mode" title="Toggle light / dark mode">&#9790;</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HOME / HERO -->
+  <section class="hero" id="home" aria-labelledby="heroName">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">Personal Website | Pacific States University</span>
+        <h1 id="heroName">Hello, I'm [STUDENT NAME]</h1>
+        <p class="program" id="heroProgram">[PROGRAM NAME] Student | Technology Enthusiast | Future Professional</p>
+        <p class="intro" id="heroIntro">[Write a short 2&ndash;3 sentence introduction in the STUDENT object at the bottom of this file.]</p>
+        <ul class="meta" id="heroMeta"></ul>
+        <div class="btns">
+          <a class="btn primary" href="#projects">View My Work</a>
+          <a class="btn ghost" id="heroResume" href="assets/resume.pdf" download>Download Resume</a>
+        </div>
+        <div class="socials" id="heroSocials" aria-label="Social links"></div>
+      </div>
+      <div class="photo" id="photoBox">
+        <span class="initials" id="initials" aria-hidden="true">PSU</span>
+        <img id="photo" src="assets/profile.jpg" alt="Profile photo of [STUDENT NAME]" width="280" height="340" onerror="this.remove()">
+      </div>
+    </div>
+  </section>
+
+  <!-- Each section below is filled automatically from the STUDENT object.
+       A section with no content is removed, and its menu item disappears. -->
+  <section class="sec" id="about"><div class="wrap"><h2>About Me</h2><div class="body" id="about-body"></div></div></section>
+  <section class="sec" id="education"><div class="wrap"><h2>Education</h2><div class="body" id="education-body"></div></div></section>
+  <section class="sec" id="skills"><div class="wrap"><h2>Skills</h2><div class="body" id="skills-body"></div></div></section>
+  <section class="sec" id="projects"><div class="wrap"><h2>Projects</h2><div class="body" id="projects-body"></div></div></section>
+  <section class="sec" id="experience"><div class="wrap"><h2>Experience</h2><div class="body" id="experience-body"></div></div></section>
+  <section class="sec" id="research"><div class="wrap"><h2>Research</h2><div class="body" id="research-body"></div></div></section>
+  <section class="sec" id="publications"><div class="wrap"><h2>Publications</h2><div class="body" id="publications-body"></div></div></section>
+  <section class="sec" id="credentials"><div class="wrap"><h2>Certifications &amp; Awards</h2><div class="body" id="credentials-body"></div></div></section>
+  <section class="sec" id="leadership"><div class="wrap"><h2>Volunteering &amp; Leadership</h2><div class="body" id="leadership-body"></div></div></section>
+
+  <!-- RESUME -->
+  <section class="sec" id="resume" aria-labelledby="resumeTitle"><div class="wrap">
+    <div class="cta">
+      <h2 id="resumeTitle">Resume</h2>
+      <p>A one-page summary of my education, experience and skills.</p>
+      <div class="btns">
+        <a class="btn primary" id="resumeDownload" href="assets/resume.pdf" download>Download Resume</a>
+        <a class="btn ghost" id="resumeView" href="assets/resume.pdf" target="_blank" rel="noopener">View Resume</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- CONTACT -->
+  <section class="sec" id="contact" aria-labelledby="contactTitle"><div class="wrap">
+    <h2 id="contactTitle">Interested in connecting?</h2>
+    <p class="lead">Feel free to reach out regarding internships, employment, research, projects, or collaboration.</p>
+    <div class="body">
+      <ul class="meta" id="contactMeta"></ul>
+      <div class="btns"><a class="btn primary" id="contactBtn" href="mailto:[EMAIL]">Send an Email</a></div>
+      <div class="socials" id="contactSocials"></div>
+      <!-- Want a different contact method (e.g. Calendly, a form service)? Change the href of the button above. -->
+    </div>
+  </div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> <span id="footName">[STUDENT NAME]</span>. All rights reserved.</p>
+    <p>Personal Website | Pacific States University. This is an independent personal website and is not operated or endorsed by Pacific States University.</p>
+  </div>
+</footer>
+
+<noscript><div class="wrap"><p>This portfolio loads its content with JavaScript. Please enable JavaScript to view all sections.</p></div></noscript>
+
+<script>
+/* =====================================================================
+   STUDENT INFORMATION — EDIT THIS SECTION
+   Replace every [PLACEHOLDER] with your real information.
+   Leave a value as "" (text) or [] (list) to hide it from the website.
+   Do not invent information: only include what is true about you.
+   ===================================================================== */
+const STUDENT = {
+
+  /* ---- BASIC INFO ---- */
+  name: "[STUDENT NAME]",
+  program: "[PROGRAM NAME]",                       // e.g. your degree program
+  headline: "Technology Enthusiast | Future Professional",
+  intro: "[Short introduction: who you are, what you study, and what you are looking for.]",
+  location: "[CITY, STATE]",
+  email: "[your-email@example.com]",
+  phone: "",                                       // optional, e.g. "+1 (555) 000-0000"
+  photo: "assets/profile.jpg",                     // put your photo in the assets folder
+  resume: "assets/resume.pdf",                     // put your resume in the assets folder
+
+  /* ---- SOCIAL LINKS (empty "" = hidden) ---- */
+  social: {
+    linkedin:     "https://www.linkedin.com/in/[your-username]",
+    github:       "https://github.com/[your-username]",
+    scholar:      "",   // Google Scholar profile URL
+    orcid:        "",   // https://orcid.org/0000-0000-0000-0000
+    researchgate: "",
+    portfolio:    "",
+    twitter:      "",   // X / Twitter
+    other: [            // any other professional link: { label: "Medium", url: "https://..." },
+    ]
+  },
+
+  /* ---- ABOUT ME ---- */
+  about: {
+    bio: "[Short biography: 3&ndash;4 sentences about you.]",
+    academic: "[Academic background.]",
+    careerInterests: ["[Career interest 1]", "[Career interest 2]"],
+    goals: "[Professional goals.]",
+    personal: ["[Personal interest 1]", "[Personal interest 2]"]
+  },
+
+  /* ---- EDUCATION (copy a block to add more) ---- */
+  education: [
+    {
+      institution: "Pacific States University",
+      degree: "[Degree, e.g. Master of Science]",
+      major: "[Major]",
+      start: "[Start year]",
+      end: "[Expected graduation]",
+      gpa: "",                                     // optional, e.g. "3.8 / 4.0"
+      coursework: ["[Course 1]", "[Course 2]", "[Course 3]"],
+      achievements: ["[Academic achievement]"]
+    }
+  ],
+
+  /* ---- SKILLS (category name: list of skills; delete categories you don't need) ---- */
+  skills: {
+    "Programming":        ["[Language 1]", "[Language 2]"],
+    "Software":           ["[Tool 1]", "[Tool 2]"],
+    "Databases":          [],
+    "Cloud":              [],
+    "Networking":         [],
+    "Cybersecurity":      [],
+    "AI / ML":            [],
+    "Data Analytics":     [],
+    "Professional Skills": ["Communication", "Leadership", "Teamwork", "Problem Solving", "Project Management"]
+  },
+
+  /* ---- PROJECTS (copy a { ... }, block to add more) ---- */
+  projects: [
+    {
+      title: "[Project Title]",
+      description: "[What the project does and the problem it solves.]",
+      tech: ["[Technology 1]", "[Technology 2]"],
+      role: "[Your role]",
+      date: "[Month Year]",
+      github: "",                                  // link to repository, or ""
+      demo: "",                                    // link to live demo, or ""
+      image: "assets/project-1.jpg"                // optional; a placeholder shows if missing
+    },
+    {
+      title: "[Project Title 2]",
+      description: "[Project description.]",
+      tech: ["[Technology]"],
+      role: "[Your role]",
+      date: "[Month Year]",
+      github: "",
+      demo: "",
+      image: "assets/project-2.jpg"
+    }
+  ],
+
+  /* ---- EXPERIENCE (copy a block to add more; focus on achievements) ---- */
+  experience: [
+    {
+      title: "[Job Title]",
+      company: "[Company Name]",
+      location: "[City, State]",
+      start: "[Start]",
+      end: "[End or Present]",
+      responsibilities: ["[Key responsibility]"],
+      achievements: ["[Measurable achievement, e.g. reduced processing time by X%]"],
+      tech: ["[Technology]"]
+    }
+  ],
+
+  /* ---- RESEARCH (optional: set everything to empty to hide the section) ---- */
+  research: {
+    interests: [],                                 // e.g. ["Machine Learning"]
+    projects: [],                                  // { title, description, role, date, link }
+    conferences: [],                               // { name, date, role }
+    assistant: [],                                 // { title, lab, dates, description }
+    links: []                                      // { label, url }
+  },
+
+  /* ---- PUBLICATIONS (optional; list only real publications) ---- */
+  publications: [
+    // { title: "", authors: "", venue: "", year: "", doi: "", abstract: "", pdf: "", publisher: "" }
+  ],
+
+  /* ---- CERTIFICATIONS ---- */
+  certifications: [
+    { name: "[Certification Name]", issuer: "[Issuing Organization]", date: "[Month Year]", url: "" }
+  ],
+
+  /* ---- AWARDS ---- */
+  awards: [
+    { name: "[Award Name]", org: "[Organization]", date: "[Month Year]", description: "[Short description.]" }
+  ],
+
+  /* ---- VOLUNTEERING & LEADERSHIP (e.g. IEEE, student clubs) ---- */
+  leadership: [
+    { role: "[Role]", org: "[Organization]", dates: "[Dates]", description: "[What you did.]" }
+  ]
+};
+
+/* =====================================================================
+   WEBSITE CODE — students normally do not need to edit below this line
+   ===================================================================== */
+(function () {
+  "use strict";
+  var S = STUDENT;
+
+  /* ---------- helpers ---------- */
+  function $(id) { return document.getElementById(id); }
+  function esc(v) {
+    return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  /* Text that may contain simple entities such as &ndash; is allowed only for these fields. */
+  function raw(v) { return String(v == null ? "" : v).replace(/<[^>]*>/g, ""); }
+  function safeUrl(u) { return /^\s*javascript:/i.test(u) ? "#" : esc(u); }
+  function filled(v) { return typeof v === "string" && v.trim() !== ""; }
+  function list(a) { return Array.isArray(a) ? a.filter(filled) : []; }
+  function link(url, label) { return filled(url) ? '<a href="' + safeUrl(url) + '" target="_blank" rel="noopener">' + esc(label) + "</a>" : ""; }
+  function chips(a) { a = list(a); return a.length ? '<ul class="chips">' + a.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : ""; }
+  function bullets(a) { a = list(a); return a.length ? "<ul>" + a.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : ""; }
+  function dates(a, b) { return [a, b].filter(filled).join(" \u2013 "); }
+
+  /* ---------- basic info / head ---------- */
+  var name = S.name;
+  document.title = name + " | " + S.program + " Student";
+  $("brandName").textContent = name;
+  $("footName").textContent = name;
+  $("heroName").textContent = "Hello, I'm " + name;
+  $("heroProgram").textContent = S.program + " Student | " + S.headline;
+  $("heroIntro").textContent = S.intro;
+  $("year").textContent = new Date().getFullYear();
+  $("initials").textContent = name.replace(/[\[\]]/g, "").split(/\s+/).map(function (w) { return w.charAt(0); }).join("").slice(0, 2).toUpperCase() || "PSU";
+  $("photo").src = S.photo;
+  $("photo").alt = "Profile photo of " + name;
+
+  var meta = [];
+  if (filled(S.location)) meta.push("<li>" + esc(S.location) + "</li>");
+  if (filled(S.email)) meta.push('<li><a href="mailto:' + esc(S.email) + '">' + esc(S.email) + "</a></li>");
+  $("heroMeta").innerHTML = meta.join("");
+  var cMeta = meta.slice();
+  if (filled(S.phone)) cMeta.push('<li><a href="tel:' + esc(S.phone.replace(/[^\d+]/g, "")) + '">' + esc(S.phone) + "</a></li>");
+  $("contactMeta").innerHTML = cMeta.join("");
+  $("contactBtn").href = "mailto:" + S.email;
+
+  /* ---------- social links ---------- */
+  var labels = { linkedin: "LinkedIn", github: "GitHub", scholar: "Google Scholar", orcid: "ORCID", researchgate: "ResearchGate", portfolio: "Portfolio", twitter: "X / Twitter" };
+  var soc = [];
+  Object.keys(labels).forEach(function (k) { if (filled(S.social[k])) soc.push([labels[k], S.social[k]]); });
+  (S.social.other || []).forEach(function (o) { if (o && filled(o.url)) soc.push([o.label || "Link", o.url]); });
+  var socHtml = soc.map(function (s) { return '<a href="' + safeUrl(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + "</a>"; }).join("");
+  $("heroSocials").innerHTML = socHtml;
+  $("contactSocials").innerHTML = socHtml;
+
+  /* ---------- resume links ---------- */
+  ["heroResume", "resumeDownload", "resumeView"].forEach(function (id) { $(id).href = S.resume; });
+  if (!filled(S.resume)) {
+    $("heroResume").remove();
+    $("resume").remove();
+  }
+
+  /* ---------- About ---------- */
+  var a = S.about || {};
+  function aboutBlock(title, body) { return body ? '<div class="card"><h3>' + title + "</h3>" + body + "</div>" : ""; }
+  var aboutMain = aboutBlock("Biography", filled(a.bio) ? "<p>" + raw(a.bio) + "</p>" : "") +
+                  aboutBlock("Academic Background", filled(a.academic) ? "<p>" + raw(a.academic) + "</p>" : "");
+  var aboutSide = aboutBlock("Career Interests", bullets(a.careerInterests)) +
+                  aboutBlock("Professional Goals", filled(a.goals) ? "<p>" + raw(a.goals) + "</p>" : "") +
+                  aboutBlock("Personal Interests", bullets(a.personal));
+  fill("about", aboutMain || aboutSide ? '<div class="about-grid"><div>' + aboutMain + "</div><div>" + aboutSide + "</div></div>" : "");
+
+  /* ---------- Education ---------- */
+  fill("education", '<div class="grid">' + (S.education || []).map(function (e) {
+    var cw = list(e.coursework);
+    return '<article class="card"><div class="row"><h3>' + esc(e.institution) + '</h3><span class="date">' + esc(dates(e.start, e.end)) + "</span></div>" +
+      '<p class="sub">' + esc([e.degree, e.major].filter(filled).join(", ")) + (filled(e.gpa) ? " &middot; GPA " + esc(e.gpa) : "") + "</p>" +
+      bullets(e.achievements) +
+      (cw.length ? "<details><summary>Relevant coursework</summary>" + chips(cw) + "</details>" : "") + "</article>";
+  }).join("") + "</div>", (S.education || []).length);
+
+  /* ---------- Skills ---------- */
+  var skHtml = "";
+  Object.keys(S.skills || {}).forEach(function (cat) {
+    if (list(S.skills[cat]).length) skHtml += '<article class="card"><h3>' + esc(cat) + "</h3>" + chips(S.skills[cat]) + "</article>";
+  });
+  fill("skills", skHtml ? '<div class="grid">' + skHtml + "</div>" : "");
+
+  /* ---------- Projects ---------- */
+  fill("projects", '<div class="grid">' + (S.projects || []).map(function (p) {
+    var img = filled(p.image) ? '<img src="' + safeUrl(p.image) + '" alt="Screenshot of ' + esc(p.title) + '" loading="lazy" onerror="this.remove()">' : "";
+    return '<article class="card project"><div class="shot" >' + '<span class="ph">Project image</span>' + img + '</div><div class="in">' +
+      '<div class="row"><h3>' + esc(p.title) + '</h3><span class="date">' + esc(p.date) + "</span></div>" +
+      (filled(p.role) ? '<p class="sub">Role: ' + esc(p.role) + "</p>" : "") +
+      "<p>" + esc(p.description) + "</p>" + chips(p.tech) +
+      '<div class="links">' + link(p.github, "GitHub") + link(p.demo, "Live demo") + "</div></div></article>";
+  }).join("") + "</div>", (S.projects || []).length);
+
+  /* ---------- Experience ---------- */
+  fill("experience", '<div class="timeline">' + (S.experience || []).map(function (x) {
+    return '<article class="card"><div class="row"><h3>' + esc(x.title) + '</h3><span class="date">' + esc(dates(x.start, x.end)) + "</span></div>" +
+      '<p class="sub">' + esc([x.company, x.location].filter(filled).join(" \u2022 ")) + "</p>" +
+      (list(x.achievements).length ? "<strong>Achievements</strong>" + bullets(x.achievements) : "") +
+      (list(x.responsibilities).length ? '<p style="margin-top:10px"><strong>Responsibilities</strong></p>' + bullets(x.responsibilities) : "") +
+      chips(x.tech) + "</article>";
+  }).join("") + "</div>", (S.experience || []).length);
+
+  /* ---------- Research ---------- */
+  var r = S.research || {}, rh = "";
+  if (list(r.interests).length) rh += '<article class="card"><h3>Research Interests</h3>' + chips(r.interests) + "</article>";
+  (r.projects || []).forEach(function (p) {
+    rh += '<article class="card"><div class="row"><h3>' + esc(p.title) + '</h3><span class="date">' + esc(p.date) + "</span></div>" +
+      (filled(p.role) ? '<p class="sub">' + esc(p.role) + "</p>" : "") + "<p>" + esc(p.description) + "</p>" + '<div class="links">' + link(p.link, "Read more") + "</div></article>";
+  });
+  (r.assistant || []).forEach(function (p) {
+    rh += '<article class="card"><div class="row"><h3>' + esc(p.title) + '</h3><span class="date">' + esc(p.dates) + "</span></div>" +
+      '<p class="sub">' + esc(p.lab) + "</p><p>" + esc(p.description) + "</p></article>";
+  });
+  if ((r.conferences || []).length) {
+    rh += '<article class="card"><h3>Conferences</h3><ul>' + r.conferences.map(function (c) {
+      return "<li>" + esc([c.name, c.role, c.date].filter(filled).join(" \u2014 ")) + "</li>";
+    }).join("") + "</ul></article>";
+  }
+  if ((r.links || []).length) {
+    rh += '<article class="card"><h3>Research Links</h3><div class="links" style="flex-wrap:wrap">' + r.links.map(function (l) { return link(l.url, l.label); }).join("") + "</div></article>";
+  }
+  fill("research", rh ? '<div class="grid">' + rh + "</div>" : "");
+
+  /* ---------- Publications ---------- */
+  fill("publications", (S.publications || []).map(function (p) {
+    return '<article class="pub"><p class="t">' + esc(p.title) + "</p>" +
+      "<p>" + esc(p.authors) + " (" + esc(p.year) + '). <span class="v">' + esc(p.venue) + "</span>." +
+      (filled(p.doi) ? ' DOI: <a href="https://doi.org/' + esc(p.doi) + '" target="_blank" rel="noopener">' + esc(p.doi) + "</a>" : "") + "</p>" +
+      (filled(p.abstract) ? "<details><summary>Abstract</summary><p>" + esc(p.abstract) + "</p></details>" : "") +
+      '<div class="links">' + link(p.pdf, "PDF") + link(p.publisher, "Publisher") + "</div></article>";
+  }).join(""), (S.publications || []).length);
+
+  /* ---------- Certifications & Awards ---------- */
+  var ch = "";
+  if ((S.certifications || []).length) {
+    ch += '<h3 style="margin-bottom:14px">Certifications</h3><div class="grid">' + S.certifications.map(function (c) {
+      return '<article class="card"><h3>' + esc(c.name) + '</h3><p class="sub">' + esc(c.issuer) + (filled(c.date) ? " \u2022 " + esc(c.date) : "") + "</p>" +
+        '<div class="links">' + link(c.url, "View credential") + "</div></article>";
+    }).join("") + "</div>";
+  }
+  if ((S.awards || []).length) {
+    ch += '<h3 style="margin:' + (ch ? "34px" : "0") + ' 0 14px">Awards &amp; Achievements</h3><div class="grid">' + S.awards.map(function (c) {
+      return '<article class="card"><h3>' + esc(c.name) + '</h3><p class="sub">' + esc(c.org) + (filled(c.date) ? " \u2022 " + esc(c.date) : "") + "</p><p>" + esc(c.description) + "</p></article>";
+    }).join("") + "</div>";
+  }
+  fill("credentials", ch);
+
+  /* ---------- Leadership ---------- */
+  fill("leadership", '<div class="grid">' + (S.leadership || []).map(function (l) {
+    return '<article class="card"><div class="row"><h3>' + esc(l.role) + '</h3><span class="date">' + esc(l.dates) + "</span></div>" +
+      '<p class="sub">' + esc(l.org) + "</p><p>" + esc(l.description) + "</p></article>";
+  }).join("") + "</div>", (S.leadership || []).length);
+
+  /* Put html into a section body, or remove the whole section if empty */
+  function fill(id, html, count) {
+    var empty = !html || count === 0;
+    var sec = $(id);
+    if (empty) { sec.remove(); return; }
+    $(id + "-body").innerHTML = html;
+  }
+
+  /* ---------- Navigation (built from the sections that still exist) ---------- */
+  var items = [["home", "Home"], ["about", "About"], ["education", "Education"], ["skills", "Skills"], ["projects", "Projects"],
+               ["experience", "Experience"], ["research", "Research"], ["publications", "Publications"], ["contact", "Contact"]];
+  var navList = $("navList");
+  items.forEach(function (it) {
+    if (!$(it[0])) return;
+    var li = document.createElement("li");
+    li.innerHTML = '<a href="#' + it[0] + '">' + it[1] + "</a>";
+    navList.appendChild(li);
+  });
+
+  /* Highlight the current section while scrolling */
+  var links = navList.querySelectorAll("a");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          links.forEach(function (l) {
+            var on = l.getAttribute("href") === "#" + en.target.id;
+            l.classList.toggle("active", on);
+            if (on) l.setAttribute("aria-current", "true"); else l.removeAttribute("aria-current");
+          });
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    items.forEach(function (it) { if ($(it[0])) io.observe($(it[0])); });
+  }
+
+  /* ---------- Mobile menu ---------- */
+  var nav = $("siteNav"), menuBtn = $("menuBtn");
+  function setMenu(open) {
+    nav.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  menuBtn.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
+  nav.addEventListener("click", function (e) { if (e.target.tagName === "A") setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+
+  /* ---------- Light / dark toggle ---------- */
+  var themeBtn = $("themeBtn");
+  function syncThemeBtn() {
+    var dark = document.documentElement.getAttribute("data-theme") === "dark";
+    themeBtn.innerHTML = dark ? "&#9728;" : "&#9790;";
+    themeBtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+  themeBtn.addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    syncThemeBtn();
+  });
+  syncThemeBtn();
+})();
+</script>
+</body>
+</html>
