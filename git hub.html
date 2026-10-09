@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 
+      ========================================================================
+      STUDENT INFORMATION — EDIT THIS SECTION
+      ========================================================================
+      Follow the comments below to customize your portfolio.
+    -->
+    <title>Jarif Ahmed | Portfolio | Pacific States University</title>
+    <meta name="description" content="Personal Professional Portfolio of Jarif Ahmed, student at Pacific States University.">
+    <meta name="author" content="Jarif Ahmed">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Jarif Ahmed | Professional Portfolio">
+    <meta property="og:description" content="Academic and professional background of Jarif Ahmed.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Light Mode Colors - PSU Inspired Professional Palette */
+            --primary: #003366; /* Deep Navy */
+            --secondary: #c5a059; /* Muted Gold */
+            --bg: #ffffff;
+            --surface: #f8f9fa;
+            --text: #212529;
+            --text-muted: #6c757d;
+            --border: #dee2e6;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --surface: #1e1e1e;
+            --text: #e9ecef;
+            --text-muted: #adb5bd;
+            --border: #2d2d2d;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --primary: #4a90e2; /* Lighter blue for dark mode contrast */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* --- Components --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.75rem auto;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero --- */
+        #hero {
+            padding: 8rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 4px solid var(--secondary);
+            background-color: var(--surface);
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .hero-intro {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* --- Sections Grid --- */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Skills badges */
+        .skill-group {
+            margin-bottom: 2rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .badge {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Timeline for Experience/Education */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects */
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #eee;
+        }
+
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            text-align: center;
+            background: var(--surface);
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-socials a {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            color: var(--primary);
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero-name { font-size: 2.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--bg);
+                padding: 2rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+            .hero-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">Jarif Ahmed</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero">
+        <div class="container">
+            <!-- Replace with assets/profile.jpg -->
+            <img src="https://via.placeholder.com/180" alt="Jarif Ahmed" class="hero-img">
+            <h1 class="hero-name">Jarif Ahmed</h1>
+            <p class="hero-tagline">Computer Science Student | Aspiring Developer | PSU Student</p>
+            <p class="hero-intro">
+                Dedicated student at Pacific States University focused on building impactful technology solutions 
+                and pursuing excellence in software development and research.
+            </p>
+            
+            <div class="hero-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Los Angeles, CA</span>
+                <span><i class="fas fa-envelope"></i> jarif.ahmed@example.com</span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <!-- Link to your resume PDF in the assets folder -->
+                <a href="assets/resume.pdf" class="btn btn-outline" target="_blank">Download Resume</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>
+                    Hello! I'm Jarif, a passionate student currently pursuing my degree at Pacific States University. 
+                    My academic journey is driven by a curiosity for how systems work and a desire to create tools 
+                    that make a difference.
+                </p>
+                <br>
+                <p>
+                    I specialize in full-stack development with a keen interest in UI/UX design. When I'm not coding 
+                    or studying, you can find me exploring new tech trends, participating in hackathons, or 
+                    volunteering for campus technology initiatives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2024 — Present</div>
+                <h3>Pacific States University</h3>
+                <p><strong>Master of Science in Computer Science</strong></p>
+                <p>Current GPA: 3.8/4.0</p>
+                <p><em>Relevant Coursework:</em> Advanced Algorithms, Database Systems, Web Security, Software Engineering.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2020 — 2024</div>
+                <h3>[Previous University Name]</h3>
+                <p><strong>Bachelor of Science in Information Technology</strong></p>
+                <p>Academic Honors: Dean's List (2022, 2023)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="skill-group">
+                        <h3>Technical Skills</h3>
+                        <div class="badges">
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">HTML5/CSS3</span>
+                            <span class="badge">React</span>
+                            <span class="badge">Node.js</span>
+                            <span class="badge">SQL</span>
+                            <span class="badge">Git / GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="skill-group">
+                        <h3>Professional Skills</h3>
+                        <div class="badges">
+                            <span class="badge">Project Management</span>
+                            <span class="badge">UI/UX Design</span>
+                            <span class="badge">Technical Writing</span>
+                            <span class="badge">Public Speaking</span>
+                            <span class="badge">Team Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="grid">
+                <!-- Project 1 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/400x250" alt="Project 1">
+                    <h3>Smart Campus App</h3>
+                    <p>A mobile-first web application designed to help PSU students navigate campus resources efficiently.</p>
+                    <div class="badges" style="margin-top: 1rem;">
+                        <span class="badge">React</span>
+                        <span class="badge">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/400x250" alt="Project 2">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>Interactive dashboard visualizing regional employment trends using public API data.</p>
+                    <div class="badges" style="margin-top: 1rem;">
+                        <span class="badge">D3.js</span>
+                        <span class="badge">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">June 2024 — August 2024</div>
+                <h3>Software Engineer Intern</h3>
+                <p><strong>[Tech Company Name]</strong> | Remote</p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                    <li>Developed responsive front-end components using React and Tailwind CSS.</li>
+                    <li>Collaborated with the backend team to integrate RESTful APIs.</li>
+                    <li>Improved page load speed by 25% through image optimization and code refactoring.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2023 — 2024</div>
+                <h3>IT Support Assistant</h3>
+                <p><strong>Student Services Desk</strong> | University Campus</p>
+                <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                    <li>Assisted students and faculty with technical troubleshooting and software installations.</li>
+                    <li>Managed equipment inventory and documented common technical resolutions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                I am currently looking for internship and junior developer opportunities. 
+                Whether you have a question or just want to connect, feel free to reach out!
+            </p>
+            <a href="mailto:jarif.ahmed@example.com" class="btn btn-primary btn-lg">
+                <i class="fas fa-paper-plane"></i> Send an Email
+            </a>
+            
+            <div class="footer-socials" style="margin-top: 3rem;">
+                <a href="https://linkedin.com/in/jarif-ahmed" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/jarif-ahmed" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jarif Ahmed. All rights reserved.</p>
+            <p class="disclaimer">
+                Personal Website | Student at Pacific States University<br>
+                <small>This is a personal website and is not an official Pacific States University publication.</small>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.setAttribute('data-theme', 'dark');
+            updateThemeIcon('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const menuIcon = menuBtn.querySelector('i');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Hide navigation items for sections that might be empty (optional implementation)
+        // You can add logic here to check if a section has content and hide the nav link if it doesn't.
+    </script>
+</body>
+</html>
